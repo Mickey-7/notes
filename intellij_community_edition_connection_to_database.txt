@@ -1,0 +1,80 @@
+connection of intellij community edition to database 
+
+---------------------------------------------------------------------------------------------------------------------------
+
+make sure that there is a running container for the database already
+reference : https://www.youtube.com/watch?v=AshoqjeaPkc
+
+-> if mariadb : open cmd
+	go to .yml directory of the project
+	then type : docker-compose up -d
+		C:\Users\mmacaranas\Documents\77-lilo-editor>docker-compose up -d
+		Starting 77-lilo-editor_db_1 ... done
+
+---------------------------------------------------------------------------------------------------------------------------
+	  
+go to : https://plugins.jetbrains.com/plugin/1800-database-navigator
+click Version History : https://plugins.jetbrains.com/plugin/1800-database-navigator/versions
+then download ythe latest version : about 25.72MB in zip file
+
+---------------------------------------------------------------------------------------------------------------------------
+
+go to : https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client/2.6.0
+	License		LGPL 2.1
+	Categories	MySQL Drivers
+	Organization	mariadb.com
+	HomePage	https://mariadb.com/kb/en/mariadb/about-mariadb-connector-j/
+	Date		(Mar 19, 2020)
+	Files		jar (605 KB)  View All
+	Repositories	Central
+	Used By		401 artifacts
+click jar (605 KB)  View All to download the maria-db-java-client-2.6.0.jar
+
+---------------------------------------------------------------------------------------------------------------------------
+
+open intellij, 
+	click File -> 
+	Settings -> 
+	Plugins -> 
+	click the settings icon ->
+	select Install Plugin from Disk ->
+	then go to the directory of dowloaded DBN ->
+	then click ok ->
+	then click Restart IDE ->
+	choose Restart -> 
+
+---------------------------------------------------------------------------------------------------------------------------
+
+on the left side on the Intellij IDE,
+	notice the DB Browser is added together with Project & Learn category
+	click + icon
+	select Custom (since there is no mariadb)
+	then fillup the fields
+
+Name :			database_name (must match the database_name on application.properties)
+Description :	
+URL :			jdbc:mariadb://localhost:3306/database_name
+
+User : 			root
+Password :		P@ssw0rd1
+Driver Library :	add the downloaded maria-db-java-client-2.6.0.jar
+
+	then click test connection
+
+---------------------------------------------------------------------------------------------------------------------------
+
+	go to employee table -> 
+	double click then ignore filter ->
+	and the employee table will be opened/displayed
+
+	to add employee, click the + icon to insert record on the table field 
+	then input the entries after that, commit (icon after -) all edits 
+
+	to delete row, click the row then select - 
+	after that commit
+
+	if error occured, try deleting the connection by click + icon on left side navbar
+	then reconnect again, notice that the error dissapears
+
+
+

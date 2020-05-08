@@ -1,0 +1,56 @@
+Python Plugin on IntelliJ IDEA IDE
+
+---------------------------------------------------------------------------------------------------------------------------
+
+go to python.org to download Interpreter : https://www.python.org/downloads/
+choose latest version : Python 3.8.3rc1 April 29, 2020  Download Release Notes
+then click Download : https://www.python.org/downloads/release/python-383rc1/
+choose the one with embeddable zip file for x64 bit : click Windows x86-64 embeddable zip file
+create new folder (python interpreter) file : cut and paste the downloaded zip file then extract
+
+---------------------------------------------------------------------------------------------------------------------------
+
+open intellij, 
+	click File -> 
+	Settings -> 
+	Plugins -> 
+	click Marketplace ->
+	click Install ->
+	then click Restart IDE ->
+	choose Restart -> 
+after restarting the IDE,
+	click File ->
+	New ->
+	Project -> 
+notice that there is Python already available on the options
+	select Python ->
+	on Project SDK: <No Interpreter> ->
+	click New -> on Virtualenv Environment
+	select Existing environment ->
+	then go to the python interpreter ->
+	(the folder where we extracted the zip file)
+	and choose pythonw.exe file ->
+	then click next then type the project folder name then finish
+create Python file and print something
+	right click on project folder ->
+	select New -> Python File -> 
+	type name of python file then enter ->
+	type print("Hello, World!") ->
+	then right click on the file then select Run
+
+---------------------------------------------------------------------------------------------------------------------------
+
+console run output
+
+	"C:\Users\mmacaranas\Downloads\python interpreter\pythonw.exe" C:/Users/mmacaranas/Downloads/untitled/Main.py
+	Hello, World!
+
+	Process finished with exit code 0
+	
+	
+
+
+
+
+
+	

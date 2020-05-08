@@ -1,0 +1,56 @@
+ERROR:
+	
+ERROR in TypeError: Cannot read property 'flags' of undefined
+
+SOLUTION:
+
+https://www.c-sharpcorner.com/article/create-and-experiment-angular-9-rc-app-without-installing-9-cli/
+
+	npx @angular/cli@next new dialog-angular-material
+	
+	@next will automatically installs the latest preview version from Angular repo
+
+https://medium.com/@starikovs/how-to-use-angular-cli-locally-729dbb6707dd
+	npx @angular/cli new angular-material-dialog
+
+
+https://stackoverflow.com/questions/61670882/error-in-typeerror-cannot-read-property-flags-of-undefined
+	npm install @angular/core@9.1.4 @angular/animations@9.1.4 @angular/common@9.1.4 @angular/forms@9.1.4 @angular/platform-browser@9.1.4 @angular/router@9.1.4 @angular/platform-browser-dynamic@9.1.4 @angular/compiler@9.1.4 @angular/compiler-cli@9.1.4 @angular/language-service@9.1.4
+
+	ng build
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+ERROR:
+
+/ Installing packages...npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142 
+
+npm ERR! Unexpected end of JSON input while parsing near '..."gulp":"latest","gulp'
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\donat\AppData\Roaming\npm-cache\_logs\2020-03-01T04_19_06_183Z-debug.log
+× Package install failed, see above.
+The Schematic workflow failed. See above.
+
+SOLUTION:
+
+https://stackoverflow.com/questions/47675478/npm-install-errorunexpected-end-of-json-input-while-parsing-near-nt-webpack
+
+That's a problem related to npm, it's about the cache that get corrupt. 
+Even though in newer versions of npm they implemented self healing, 
+which normally guarantee no corruption, 
+but it seem it's not that efficient. Forcing clean cache resolve the problem.
+
+	npm cache clean --force
+
+	then try creating a new project again
+
+	npx @angular/cli new (project name)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
