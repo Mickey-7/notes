@@ -10,6 +10,21 @@ reference : https://www.youtube.com/watch?v=AshoqjeaPkc
 	then type : docker-compose up -d
 		C:\Users\mmacaranas\Documents\77-lilo-editor>docker-compose up -d
 		Starting 77-lilo-editor_db_1 ... done
+		
+	docker-compose.yml
+	
+	version: '3.1'
+
+	services:
+	  db:
+	    image: "mariadb/server:10.3"
+	    ports:
+	      - "3306:3306"
+	    environment:
+	      MYSQL_ROOT_PASSWORD: "P@ssw0rd1"
+	      MYSQL_DATABASE: "lilo_editorv3"
+	    
+	note the database name : MYSQL_DATABASE: "lilo_editorv3"
 
 ---------------------------------------------------------------------------------------------------------------------------
 	  
@@ -52,9 +67,11 @@ on the left side on the Intellij IDE,
 	then fillup the fields
 
 Name :			database_name (must match the database_name on application.properties)
+			MYSQL_DATABASE: "lilo_editorv3"
+			Name : lilo_editorv3
 Description :	
 URL :			jdbc:mariadb://localhost:3306/database_name
-
+			jdbc:mariadb://localhost:3306/lilo_editorv3
 User : 			root
 Password :		P@ssw0rd1
 Driver Library :	add the downloaded maria-db-java-client-2.6.0.jar
