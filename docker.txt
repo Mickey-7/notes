@@ -1,0 +1,278 @@
+cmd command   	|   meaning
+----------------------------------------------------
+docker images 	| see list of images 
+docker image ls	| see list of images
+----------------------------------------------------
+C:\Users\mmacaranas>docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+mariadb/server      10.3                890adfc23a42        5 months ago        345MB
+mysql               8.0.18              ed1ffcb5eff3        6 months ago        456MB
+
+
+cmd command   	|   meaning
+----------------------------------------------------
+docker ps 	| see running processes
+----------------------------------------------------
+C:\Users\mmacaranas>docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                    NAMES
+05814e4c8f60        mariadb/server:10.3   "docker-entrypoint.s…"   2 months ago        Up 2 days           0.0.0.0:3306->3306/tcp   77-lilo-editor_db_1
+
+cmd command   		 |   meaning
+----------------------------------------------------
+docker pull mysql:8.0.18 | When pulling an image by digest, you specify exactly which version of an image to pull. 
+			 | Doing so, allows you to “pin” an image to that version, 
+			 | and guarantee that the image you’re using is always the same.
+			 | To know the digest of an image, pull the image first. 
+			 | Let’s pull the latest mysql:8.0.18 image from Docker Hub:
+----------------------------------------------------
+C:\Users\mmacaranas>docker pull mysql:8.0.18
+8.0.18: Pulling from library/mysql
+Digest: sha256:e1b0fd480a11e5c37425a2591b6fbd32af886bfc6d6f404bd362be5e50a2e632
+Status: Image is up to date for mysql:8.0.18
+
+cmd command   		 		     		   |   meaning
+--------------------------------------------------------------------------------------------------------
+docker run -d -e MYSQL_ROOT_PASSWORD=PASSWORD mysql:8.0.18 |
+----------------------------------------------------
+C:\Users\mmacaranas>docker run -d -e MYSQL_ROOT_PASSWORD=PASSWORD mysql:8.0.18
+1843acd318a5a9e4e2e8774e21c157141a302792f88f6a136200e3ea9ce2ec79
+
+cmd command   	          |   meaning
+--------------------------------------------------------------------------------------------------------
+docker logs 184 (first 3) | to verify if working
+--------------------------------------------------------------------------------------------------------
+C:\Users\mmacaranas>docker logs 184
+2020-07-13 10:47:08+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.18-1debian9 started.
+2020-07-13 10:47:10+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+2020-07-13 10:47:10+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.18-1debian9 started.
+2020-07-13 10:47:10+00:00 [Note] [Entrypoint]: Initializing database files
+2020-07-13T10:47:10.411340Z 0 [Warning] [MY-011070] [Server] 'Disabling symbolic links using --skip-symbolic-links (or equivalent) is the default. Consider not using this option as it' is deprecated and will be removed in a future release.
+2020-07-13T10:47:10.472601Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.0.18) initializing of server in progress as process 46
+2020-07-13T10:47:45.641487Z 5 [Warning] [MY-010453] [Server] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
+2020-07-13 10:48:24+00:00 [Note] [Entrypoint]: Database files initialized
+2020-07-13 10:48:25+00:00 [Note] [Entrypoint]: Starting temporary server
+2020-07-13T10:48:25.604724Z 0 [Warning] [MY-011070] [Server] 'Disabling symbolic links using --skip-symbolic-links (or equivalent) is the default. Consider not using this option as it' is deprecated and will be removed in a future release.
+2020-07-13T10:48:25.604966Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.18) starting as process 95
+2020-07-13T10:48:29.827099Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2020-07-13T10:48:29.996698Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+2020-07-13T10:48:30.089121Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.18'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Server - GPL.
+2020-07-13 10:48:30+00:00 [Note] [Entrypoint]: Temporary server started.
+2020-07-13T10:48:30.400413Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Socket: '/var/run/mysqld/mysqlx.sock'
+Warning: Unable to load '/usr/share/zoneinfo/iso3166.tab' as time zone. Skipping it.
+Warning: Unable to load '/usr/share/zoneinfo/leap-seconds.list' as time zone. Skipping it.
+Warning: Unable to load '/usr/share/zoneinfo/zone.tab' as time zone. Skipping it.
+Warning: Unable to load '/usr/share/zoneinfo/zone1970.tab' as time zone. Skipping it.
+
+2020-07-13 10:48:51+00:00 [Note] [Entrypoint]: Stopping temporary server
+2020-07-13T10:48:51.210102Z 10 [System] [MY-013172] [Server] Received SHUTDOWN from user root. Shutting down mysqld (Version: 8.0.18).
+2020-07-13T10:48:53.646935Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.0.18)  MySQL Community Server - GPL.
+2020-07-13 10:48:54+00:00 [Note] [Entrypoint]: Temporary server stopped
+
+2020-07-13 10:48:54+00:00 [Note] [Entrypoint]: MySQL init process done. Ready for start up.
+
+2020-07-13T10:48:54.663427Z 0 [Warning] [MY-011070] [Server] 'Disabling symbolic links using --skip-symbolic-links (or equivalent) is the default. Consider not using this option as it' is deprecated and will be removed in a future release.
+2020-07-13T10:48:54.663536Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.18) starting as process 1
+2020-07-13T10:48:58.276275Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2020-07-13T10:48:58.413079Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+2020-07-13T10:48:58.456679Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.18'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+2020-07-13T10:48:58.752043Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Socket: '/var/run/mysqld/mysqlx.sock' bind-address: '::' port: 33060
+
+
+
+cmd command   	          	  |   meaning
+--------------------------------------------------------------------------------------------------------
+docker exec -it 184(first 3) bash | going inside the mysql container
+--------------------------------------------------------------------------------------------------------
+C:\Users\mmacaranas>docker exec -it 184 bash
+root@1843acd318a5:/#
+
+--------------------------------------------------------------------------------------------------------
+type : mysql -u root -p
+then press enter
+type : PASSWORD
+then press enter
+--------------------------------------------------------------------------------------------------------
+C:\Users\mmacaranas>docker exec -it 184 bash
+root@1843acd318a5:/# mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.18 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>
+
+
+--------------------------------------------------------------------------------------------------------
+type : show databases;
+then press enter
+--------------------------------------------------------------------------------------------------------
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+--------------------------------------------------------------------------------------------------------
+-> create a database
+--------------------------------------------------------------------------------------------------------
+mysql> create database schooldb;
+Query OK, 1 row affected (0.22 sec)
+--------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------------------------
+-> check the created database
+--------------------------------------------------------------------------------------------------------
+mysql> show database;
+--------------------------------------------------------------------------------------------------------
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| schooldb           |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+--------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------
+->deleting databse
+--------------------------------------------------------------------------------------------------------
+mysql> drop database schooldb;
+--------------------------------------------------------------------------------------------------------
+Query OK, 0 rows affected (0.27 sec)
+
+--------------------------------------------------------------------------------------------------------
+->check databases
+--------------------------------------------------------------------------------------------------------
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+--------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------
+-create database again
+--------------------------------------------------------------------------------------------------------
+mysql> create database schooldb;
+--------------------------------------------------------------------------------------------------------
+Query OK, 1 row affected (0.24 sec)
+
+--------------------------------------------------------------------------------------------------------
+->check databases
+--------------------------------------------------------------------------------------------------------
+mysql> show databases;
+--------------------------------------------------------------------------------------------------------
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| schooldb           |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+--------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------
+-> create table on database
+--------------------------------------------------------------------------------------------------------
+mysql> use schooldb;
+--------------------------------------------------------------------------------------------------------
+Database changed
+--------------------------------------------------------------------------------------------------------
+mysql> create table students(id int, name varchar(100), grade decimal(10,2));
+--------------------------------------------------------------------------------------------------------
+Query OK, 0 rows affected (1.00 sec)
+--------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------
+->check created table
+--------------------------------------------------------------------------------------------------------
+mysql> show tables;
+--------------------------------------------------------------------------------------------------------
++--------------------+
+| Tables_in_schooldb |
++--------------------+
+| students           |
++--------------------+
+1 row in set (0.00 sec)
+--------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------
+->exit database
+--------------------------------------------------------------------------------------------------------
+mysql> exit
+--------------------------------------------------------------------------------------------------------
+Bye
+root@3475639efa55:/# 
+--------------------------------------------------------------------------------------------------------
+then type : exit
+--------------------------------------------------------------------------------------------------------
+exit
+
+--------------------------------------------------------------------------------------------------------
+-> stop container
+--------------------------------------------------------------------------------------------------------
+docker stop (first 3)
+--------------------------------------------------------------------------------------------------------
+C:\Users\mmacaranas>docker stop 184
+--------------------------------------------------------------------------------------------------------
+184
+--------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------
+->check if the container is already stopped
+--------------------------------------------------------------------------------------------------------
+C:\Users\mmacaranas>docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+--------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------
+->run the container again
+--------------------------------------------------------------------------------------------------------
+docker start 184
+--------------------------------------------------------------------------------------------------------
+C:\Users\mmacaranas>docker start 184
+184
+
+--------------------------------------------------------------------------------------------------------
+-> stop container
+--------------------------------------------------------------------------------------------------------
+docker stop (first 3)
+--------------------------------------------------------------------------------------------------------
+C:\Users\mmacaranas>docker stop 184
+--------------------------------------------------------------------------------------------------------
+184
+--------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------------------------
+->remove container
+--------------------------------------------------------------------------------------------------------
+docker rm (first 3)
+--------------------------------------------------------------------------------------------------------
+C:\Users\mmacaranas>docker rm 184
+184

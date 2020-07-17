@@ -1,0 +1,46 @@
+reference : https://www.youtube.com/watch?v=hpfxosv6UWk
+
+-> open intellij
+-> Create New Project
+-> select Java then Next
+-> check Create project from template then Next
+-> edit Project name: demo then Finish
+
+on Main.java,
+-> simply type sout then enter and inside it tpye "this is a jar"
+
+create jar file,
+-> File
+-> Project Structure
+-> Artifacts
+-> click the + icon
+-> JAR
+-> From node modules with dependencies
+-> click the folder icon on Main class: input box
+-> click OK
+-> click OK
+-> click OK
+notice the META-INF folder is created.
+
+build jar file,
+-> Build
+-> Build Artifacts..
+-> Build
+notice that the out folder is created.
+
+go inside out folder,
+-> out
+-> artifatcs
+-> demo_jar
+-> demo.jar
+copy demo.jar.
+paste it on Documents directory.
+
+open cmd,
+go to Documents directory
+C:\Users\mmacaranas>cd Documents
+then type : java -jar demo.jar 
+then press enter
+C:\Users\mmacaranas\Documents>java -jar demo.jar
+this is a jar
+
