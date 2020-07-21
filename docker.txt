@@ -32,9 +32,9 @@ Status: Image is up to date for mysql:8.0.18
 
 cmd command   		 		     		   |   meaning
 --------------------------------------------------------------------------------------------------------
-docker run -d -e MYSQL_ROOT_PASSWORD=PASSWORD mysql:8.0.18 |
+docker run -d -e MYSQL_ROOT_PASSWORD=PASSWORD -p:3306:3306 mysql:8.0.18 |
 ----------------------------------------------------
-C:\Users\mmacaranas>docker run -d -e MYSQL_ROOT_PASSWORD=PASSWORD mysql:8.0.18
+C:\Users\mmacaranas>docker run -d -e MYSQL_ROOT_PASSWORD=PASSWORD -p:3306:3306 mysql:8.0.18
 1843acd318a5a9e4e2e8774e21c157141a302792f88f6a136200e3ea9ce2ec79
 
 cmd command   	          |   meaning
